@@ -1,0 +1,45 @@
+qsub -N generate_graphs -o generate_graphs.out -e generate_graphs.err -V generate_graphs.sh
+
+mkdir exp_all_wgt_subset_6/log_folder
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_subset
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_subset
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_subset.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst_apprx.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_local
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_local
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_local.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_pairwise2W
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_pairwise2W
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_pairwise2W.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst_apprx.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_local4W
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_local4W
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_local4W.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_pairwise4W
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_pairwise4W
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_pairwise4W.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst_apprx.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_global6W
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_global6W
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_global6W.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst.sh
+
+mkdir exp_all_wgt_subset_6/log_folder_pairwise6W
+export LOG_FOLDER=exp_all_wgt_subset_6/log_folder_pairwise6W
+export MAP_FILE=exp_all_wgt_subset_6/id_to_file_pairwise6W.csv
+qsub -J 1-2 -N compute_spanner -o $LOG_FOLDER/compute_spanner.out -e $LOG_FOLDER/compute_spanner.err -V compute_mlst_apprx.sh
+
+zip -r exp_all_wgt_subset_6.zip exp_all_wgt_subset_6/
+rm -rf exp_all_wgt_subset_6/
+scp exp_all_wgt_subset_6.zip abureyanahmed@lectura.cs.arizona.edu:/home/abureyanahmed/Desktop/GD2018/
