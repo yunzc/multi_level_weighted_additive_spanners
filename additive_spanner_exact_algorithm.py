@@ -1735,6 +1735,7 @@ def single_flow_ilp(G, subset_arr, checker, param):
 
   W_max = max([d for (i,j,d) in G.edges(data='weight')])
 
+  '''
   while True:
     graph_changed = False
     for (i,j,d) in G.edges(data='weight'):
@@ -1745,6 +1746,7 @@ def single_flow_ilp(G, subset_arr, checker, param):
         break
     if not graph_changed:
       break
+  '''
 
   all_pairs = all_pairs_arr[len(all_pairs_arr)-1]
   #What are the variables in initial primal lp?
